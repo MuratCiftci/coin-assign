@@ -3,6 +3,7 @@ import { CoinList } from "./types";
 import { Text, User } from "@nextui-org/react";
 import Image from "next/image";
 import styles from "./coinList.module.css";
+import { useFavoriteCoinsStore } from "@/store/favoriteCoinsStore";
 
 type Props = {
   coin: CoinList;
@@ -11,6 +12,22 @@ type Props = {
 
 export const RenderCell = ({ coin, columnKey }: Props) => {
   const cellValue = coin[columnKey as keyof CoinList];
+
+  // global zustand store for favorite coins
+  const [favorites, addFavoriteCoin, removeFavoriteCoin] =
+    useFavoriteCoinsStore((state) => [
+      state.favoriteCoins,
+      state.addFavoriteCoin,
+      state.removeFavoriteCoin,
+    ]);
+
+  const handleFavorite = () => {
+    if (favorites.includes(coin.id)) {
+      removeFavoriteCoin(coin.id);
+    } else {
+      addFavoriteCoin(coin.id);
+    }
+  };
 
   switch (columnKey) {
     case "name":
@@ -41,8 +58,22 @@ export const RenderCell = ({ coin, columnKey }: Props) => {
       );
     case "actions":
       return (
-        <div className={styles.star}>
-          <Image src={"/star.png"} width={20} height={20} alt="star" />
+        <div className={styles.star} onClick={() => handleFavorite()}>
+          {favorites.includes(coin.id) ? (
+            <Image
+              src="/star-yellow.png"
+              alt="star-yellow"
+              width={20}
+              height={20}
+            />
+          ) : (
+            <Image
+              src="/star.png"
+              alt="star-empty"
+              width={20}
+              height={20}
+            />
+          )}
         </div>
       );
     default:

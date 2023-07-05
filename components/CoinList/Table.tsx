@@ -21,6 +21,7 @@ export default function CoinListTable({ coinList }: Props) {
 
   return (
     <Table
+      compact
       aria-label="Coin List"
       css={{
         backgroundColor: "#FFF",
@@ -80,8 +81,7 @@ export default function CoinListTable({ coinList }: Props) {
         shadow
         noMargin
         align="center"
-        rowsPerPage={coinList.length > 10 ? 10 : coinList.length}
-        onPageChange={(page) => console.log({ page })}
+        rowsPerPage={coinList.length > 20 ? 20 : coinList.length}
       />
     </Table>
   );
