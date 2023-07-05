@@ -9,10 +9,11 @@ export const getCoinList = async () => {
                 vs_currency: "usd"
             },
         });
+
         return response.data;
     }
     catch (error) {
-        return error;
+        throw error;
     }
 };
 
