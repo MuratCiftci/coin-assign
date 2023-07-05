@@ -6,7 +6,6 @@ const instance = axios.create({
 
 instance.interceptors.response.use(
   (response) => {
-    debugger
     if (response.status === 500 || response.status === 404) {
       return Promise.reject(response);
     }
