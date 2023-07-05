@@ -2,13 +2,19 @@ import React from "react";
 import { useGetCoinById } from "./api/getCoinById";
 import { Card, Grid, Image, Text } from "@nextui-org/react";
 import MarketChart from "./MarketChart";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 interface Props {
   id: string;
 }
 
 const CoinCard = ({ id }: Props) => {
-  const { coin, isLoading, isError, error } = useGetCoinById(id);
+  // router
+  const router = useRouter();
+
+  // data fetching for coin details
+  const { coin, isLoading, isError } = useGetCoinById(id);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -20,7 +26,11 @@ const CoinCard = ({ id }: Props) => {
 
   const isCoinRising = Number(coin?.price_change_percentage_24h) > 0;
   return (
-    <Card css={{ p: "$6", mw: "400px" }}>
+    <Link href={`/coins/${coin?.id}`}>
+    <Card
+      css={{ p: "$6", mw: "400px", cursor: "pointer" }}
+    
+    >
       <Card.Header>
         <Image
           alt="nextui logo"
@@ -82,6 +92,7 @@ const CoinCard = ({ id }: Props) => {
         </Grid.Container>
       </Card.Footer>
     </Card>
+    </Link>
   );
 };
 

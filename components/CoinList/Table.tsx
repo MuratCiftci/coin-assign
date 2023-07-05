@@ -2,12 +2,14 @@ import { Table, Row, Col, Tooltip, User, Text } from "@nextui-org/react";
 import { CoinList } from "./types";
 import Image from "next/image";
 import { RenderCell } from "./RenderCell";
+import { useRouter } from "next/router";
 
 type Props = {
   coinList: CoinList[];
 };
 
 export default function CoinListTable({ coinList }: Props) {
+  const router = useRouter();
   const columns =
     coinList?.length === 0
       ? [{ name: "İşlemler", uid: "actions" }]
@@ -30,6 +32,10 @@ export default function CoinListTable({ coinList }: Props) {
         marginTop: "1rem",
         borderRadius: "0.5rem",
       }}
+      selectionMode="single"
+      onSelectionChange={(e: any) => {
+        router.push(`/coins/${e.anchorKey}`);
+      }}
       containerCss={{
         width: "99%",
         backgroundColor: "#fff",
@@ -37,7 +43,6 @@ export default function CoinListTable({ coinList }: Props) {
       }}
       lined={coinList?.length === 0 ? false : true}
       headerLined={coinList?.length === 0 ? false : true}
-      selectionMode="none"
     >
       <Table.Header columns={columns}>
         {(column) => (

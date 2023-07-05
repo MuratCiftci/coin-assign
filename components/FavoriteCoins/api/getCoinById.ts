@@ -18,14 +18,14 @@ export const getCoinById = async (id: string) => {
 
 
 export const useGetCoinById = (id: string) => {
-    const queryKey = ['coin', id];
+    const queryKey = ['favoriteCoin', id];
     const queryFn = () => getCoinById(id);
 
-    const { data: coin, isLoading, isError, error } = useQuery<CoinList>(queryKey, queryFn, {
+    const { data: coin, isLoading, isError } = useQuery<CoinList>(queryKey, queryFn, {
         staleTime: 1000 * 45, // 1 seconds
         cacheTime: 1000 * 45 // 45 seconds * api call cache is 45 seconds so we set it to 45 seconds
     });
-    return { coin, isLoading, isError, error }
+    return { coin, isLoading, isError }
 }
 
 

@@ -13,7 +13,7 @@ type Props = {
 };
 
 const MarketChart = ({ id, isCoinRising }: Props) => {
-  const { marketChart, isLoading, isError, error } = useGetMarketChart(id, 1);
+  const { marketChart, isLoading, isError } = useGetMarketChart(id, 1);
   if (isLoading) {
     return <div>Loading...</div>;
   }
