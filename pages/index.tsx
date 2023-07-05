@@ -2,10 +2,9 @@ import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import CoinList from "@/components/CoinList";
 import { useState } from "react";
-
+import { FavoriteCoins } from "@/components/FavoriteCoins";
 
 export default function Home() {
-  const [favorites, setFavorites] = useState<string[]>([]); 
   return (
     <>
       <Head>
@@ -15,8 +14,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        
-        <CoinList  />
+        <FavoriteCoins />
+        <CoinList />
       </main>
     </>
   );
