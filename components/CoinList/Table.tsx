@@ -1,70 +1,24 @@
 import { Table, Row, Col, Tooltip, User, Text } from "@nextui-org/react";
 import { CoinList } from "./types";
 import Image from "next/image";
-import styles from "./coinList.module.css";
-
+import { RenderCell } from "./RenderCell";
 
 type Props = {
   coinList: CoinList[];
 };
 
 export default function CoinListTable({ coinList }: Props) {
+  const columns =
+    coinList?.length === 0
+      ? [{ name: "İşlemler", uid: "actions" }]
+      : [
+          { name: "Ad", uid: "name" },
+          { name: "Fiyat", uid: "current_price" },
+          { name: "24h", uid: "price_change_percentage_24h" },
+          { name: "24h volume", uid: "price_change_24h" },
+          { name: "İşlemler", uid: "actions" },
+        ];
 
-
-  const columns = [
-    { name: "Ad", uid: "name" },
-    { name: "Fiyat", uid: "current_price" },
-    { name: "24h", uid: "price_change_percentage_24h" },
-    { name: "24h volume", uid: "price_change_24h" },
-    { name: "İşlemler", uid: "actions" },
-  ];
-
-  const renderCell = (coin: CoinList, columnKey: React.Key) => {
-    const cellValue = coin[columnKey as keyof CoinList];
-    switch (columnKey) {
-      case "name":
-        return (
-          <User squared src={coin?.image} name={cellValue} css={{ p: 0 }}>
-            {coin?.name}
-          </User>
-        );
-      case "current_price":
-        return <Text b>${cellValue}</Text>;
-      case "price_change_percentage_24h":
-        return (
-          <Text
-            b
-            color={
-              cellValue ? (Number(cellValue) > 0 ? "success" : "error") : ""
-            }
-          >
-            {cellValue ? Number(cellValue).toFixed(2) : ""}%
-          </Text>
-        );
-
-      case "price_change_24h":
-        return (
-          <Text
-            b
-            color={
-              cellValue ? (Number(cellValue) > 0 ? "success" : "error") : ""
-            }
-          >
-            ${cellValue ? Number(cellValue).toFixed(8) : ""}
-          </Text>
-        );
-      case "actions":
-        return (
-          // add to favorites star
-          <div className={styles.star}>
-            <Image src={"/star.png"} width={20} height={20} alt="star" />
-          </div>
-        );
-
-      default:
-        return cellValue;
-    }
-  };
   return (
     <Table
       aria-label="Coin List"
@@ -115,7 +69,7 @@ export default function CoinListTable({ coinList }: Props) {
             <Table.Row>
               {(columnKey) => (
                 <Table.Cell>
-                  {renderCell(item, columnKey as keyof CoinList)}
+                  <RenderCell coin={item} columnKey={columnKey} />
                 </Table.Cell>
               )}
             </Table.Row>
