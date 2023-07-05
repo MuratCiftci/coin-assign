@@ -6,9 +6,7 @@ export const getCoinList = async () => {
 
         const response = await axios.get("/coins/markets", {
             params: {
-                vs_currency: "usd",
-                per_page: 25,
-                page: 1,
+                vs_currency: "usd"
             },
         });
         return response.data;
