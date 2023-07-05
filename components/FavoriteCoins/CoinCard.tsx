@@ -1,31 +1,7 @@
 import React from "react";
 import { useGetCoinById } from "./api/getCoinById";
 import { Card, Grid, Image, Text } from "@nextui-org/react";
-
-// chart js imports
-import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend,
-  } from 'chart.js';
-  import { Line } from 'react-chartjs-2';
-import Chart from "./Chart";
-
-  ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend
-  );
-
+import MarketChart from "./MarketChart";
 
 interface Props {
   id: string;
@@ -41,6 +17,8 @@ const CoinCard = ({ id }: Props) => {
   if (isError) {
     return <div>Coin not found</div>;
   }
+
+  const isCoinRising = Number(coin?.price_change_percentage_24h) > 0;
   return (
     <Card css={{ p: "$6", mw: "400px" }}>
       <Card.Header>
@@ -86,11 +64,23 @@ const CoinCard = ({ id }: Props) => {
           </Grid>
         </Grid.Container>
       </Card.Header>
-      <Card.Body css={{ py: "$2" }}>
-        <Text>
-            lorem
-        </Text>
-      </Card.Body>
+      <Card.Footer>
+        <Grid.Container gap={1}>
+          <Grid xs={12} justify="flex-end">
+            <Text
+              css={{
+                lineHeight: "$xs",
+                color: "$gray600",
+              }}
+            >
+              Son 24 Saat
+            </Text>
+          </Grid>
+          <Grid xs={12}>
+            <MarketChart id={id} isCoinRising={isCoinRising} />
+          </Grid>
+        </Grid.Container>
+      </Card.Footer>
     </Card>
   );
 };

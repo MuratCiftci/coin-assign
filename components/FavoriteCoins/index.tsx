@@ -14,11 +14,17 @@ export const FavoriteCoins = () => {
       </Card.Header>
 
       <Grid.Container gap={2} justify="center">
-        {favoriteCoins.map((coin) => (
-          <Grid xs={12} sm={4} md={3} key={coin}>
-            <CoinCard id={coin} />
+        {favoriteCoins.length > 0 ? (
+          favoriteCoins.map((coin) => (
+            <Grid xs={12} sm={4} md={3} key={coin}>
+              <CoinCard id={coin} />
+            </Grid>
+          ))
+        ) : (
+          <Grid xs={12}>
+            <p>Listeden favori kripto para ekleyip buradan takip edebilirsiniz.</p>
           </Grid>
-        ))}
+        )}
       </Grid.Container>
     </Card>
   );
