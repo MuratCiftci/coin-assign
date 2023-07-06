@@ -35,7 +35,7 @@ export const RenderCell = ({ coin, columnKey }: Props) => {
     if (favorites.includes(coin.id)) {
       removeFavoriteCoin(coin.id);
     } else {
-      debugger;
+      
        // go to up  smooth
       window.scrollTo({ top: 400, behavior: "smooth" });
       addFavoriteCoin(coin.id);
