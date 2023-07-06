@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Demo
 
-[Demo] (https://coin-assign.vercel.app/) Projeyi bu linkten inceleyebilirsiniz.
+[Demo](https://coin-assign.vercel.app/) Projeyi bu linkten inceleyebilirsiniz.
 
 ## Kullanılan Kütüphaneler
 
