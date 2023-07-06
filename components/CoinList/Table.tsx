@@ -1,5 +1,3 @@
-import { useRouter } from "next/router";
-
 // Types and Hooks
 import { CoinList } from "./types";
 
@@ -10,16 +8,6 @@ import styles from "./coinList.module.css";
 
 type Props = {
   coinList: CoinList[];
-};
-type UserType = {
-  id: string | number;
-  name?: string;
-  email?: string;
-  role?: string;
-  team?: string;
-  status: "active" | "paused" | "vacation";
-  age?: string;
-  avatar?: string;
 };
 
 const CoinListTable = ({ coinList }: Props) => {
