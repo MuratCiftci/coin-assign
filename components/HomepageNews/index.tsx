@@ -7,11 +7,13 @@ import { useGetCoinNews } from "./api/getCoinNews";
 import NewsCard from "../common/NewsCard";
 
 // 3rd party
-import { Grid } from "@nextui-org/react";
+import { Grid, Loading } from "@nextui-org/react";
 
 
 const HomePageNews = () => {
   const { coinNews, isLoading, isError } = useGetCoinNews();
+
+  if(isLoading) return (<Loading color="primary" />)
 
   if (isError || !coinNews) {
     return <div>News not found</div>;
@@ -35,4 +37,4 @@ const HomePageNews = () => {
   );
 };
 
-export default HomePageNews;
+export default React.memo(HomePageNews);

@@ -109,7 +109,6 @@ const CoinList = () => {
 
   const totalPages = getTotalPageBasedOnSearch(searchState);
 
-  console.log(isLoading);
   return (
     <Grid.Container gap={2} justify="space-between">
       <Card>

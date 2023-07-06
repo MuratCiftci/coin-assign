@@ -3,7 +3,7 @@ import { CoinList } from "./types";
 
 // Local imports
 import React from "react";
-import { RenderCell } from "./RenderCell";
+import RenderCell from "./RenderCell";
 import styles from "./coinList.module.css";
 
 type Props = {
@@ -18,6 +18,7 @@ const CoinListTable = ({ coinList }: Props) => {
     { name: "24s İşlem", uid: "price_change_24h" },
     { name: "İşlemler", uid: "actions" },
   ];
+
 
   return (
     <table className={styles.table}>

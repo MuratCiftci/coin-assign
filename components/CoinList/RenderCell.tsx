@@ -16,7 +16,8 @@ type Props = {
   coin: CoinList;
 };
 
-export const RenderCell = ({ coin }: Props) => {
+// react memo 
+ const RenderCell = ({ coin }: Props) => {
   const router = useRouter();
 
   // global zustand store for favorite coins
@@ -106,3 +107,5 @@ export const RenderCell = ({ coin }: Props) => {
     </tr>
   );
 };
+
+export default React.memo(RenderCell);

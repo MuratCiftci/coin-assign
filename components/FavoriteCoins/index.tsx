@@ -37,3 +37,5 @@ export const FavoriteCoins = () => {
     </Card>
   );
 };
+
+export default React.memo(FavoriteCoins);
