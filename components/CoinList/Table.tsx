@@ -37,10 +37,6 @@ export default function CoinListTable({ coinList }: Props) {
         marginTop: "1rem",
         borderRadius: "0.5rem",
       }}
-      selectionMode="none"
-      onSelectionChange={(e: any) => {
-        router.push(`/coins/${e.anchorKey}`);
-      }}
       containerCss={{
         width: "99%",
         backgroundColor: "#fff",
