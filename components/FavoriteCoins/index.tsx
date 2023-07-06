@@ -1,7 +1,12 @@
 import React from "react";
-import { useGetCoinById } from "./api/getCoinById";
+
+// Global State
 import { useFavoriteCoinsStore } from "@/store/favoriteCoinsStore";
+
+// Components
 import CoinCard from "./CoinCard";
+
+// 3rd Party
 import { Card, Grid } from "@nextui-org/react";
 
 export const FavoriteCoins = () => {

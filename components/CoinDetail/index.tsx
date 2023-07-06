@@ -1,16 +1,25 @@
-import { Badge, Grid, Text } from "@nextui-org/react";
-import { useRouter } from "next/router";
+
 import React from "react";
-import { useGetCoinById } from "../FavoriteCoins/api/getCoinById";
+import { useRouter } from "next/router";
 import Image from "next/image";
+
+// Next UI  
+import { Badge, Grid, Text } from "@nextui-org/react";
+
+// Types and Hooks and Services
 import { useGetCoinDetail } from "./api/getCoinDetail";
 import UpIcon from "../common/icons/UpIcon";
 import DownIcon from "../common/icons/DownIcon";
+
+// Local imports
 import DetailTable from "./DetailTable";
 import MarketChart from "./MarketChart";
-import styles from "./coinDetail.module.css";
 import CoinNews from "./CoinNews";
+
+// Styles and icons
+import styles from "./coinDetail.module.css";
 import BreadCrumb from "../common/icons/BreadCrumb";
+import Loader from "../common/Loading";
 
 const CoinDetail = () => {
   // get coin id from router
@@ -21,7 +30,7 @@ const CoinDetail = () => {
   const { coin, isLoading, isError } = useGetCoinDetail(id);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   if (isError) {

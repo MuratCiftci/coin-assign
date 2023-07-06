@@ -31,7 +31,8 @@ export const useGetCoinList = (page: number, searchState: string) => {
   } = useQuery<CoinList[]>(queryKey, queryFn, {
     keepPreviousData: true,
     staleTime: 1000 * 45, // 1 seconds
-    cacheTime: 1000 * 45, // 45 seconds
+    cacheTime: 1000 * 30  // 30 seconds 
+     // api is updated every 45 seconds so 30 seconds is enough to cache the data
   });
   return { coinList, isLoading, isError, error };
 };

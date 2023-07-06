@@ -1,23 +1,28 @@
 import React from "react";
-import { useGetCoinById } from "./api/getCoinById";
-import { Card, Grid, Image, Text } from "@nextui-org/react";
-import MarketChart from "./MarketChart";
-import { useRouter } from "next/router";
 import Link from "next/link";
+
+
+// Hooks/Services 
+import { useGetCoinById } from "./api/getCoinById";
+
+// Components
+import MarketChart from "./MarketChart";
+
+// 3rd party libraries
+import { Card, Grid, Image, Text } from "@nextui-org/react";
+import Loader from "../common/Loading";
 
 interface Props {
   id: string;
 }
 
 const CoinCard = ({ id }: Props) => {
-  // router
-  const router = useRouter();
 
   // data fetching for coin details
   const { coin, isLoading, isError } = useGetCoinById(id);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   if (isError) {

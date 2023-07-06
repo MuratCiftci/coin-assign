@@ -1,12 +1,21 @@
-import { useRouter } from "next/router";
 import React from "react";
+import Image from "next/image";
+import { useRouter } from "next/router";
+
+// Hooks/Services
 import { useGetNewsDetailsById } from "./api/getNewsDetails";
+
+// Components
 import Loader from "../common/Loading";
+
+// 3rd party libraries
 import { Grid, Text } from "@nextui-org/react";
 import dayjs from "dayjs";
-import BackArrow from "../common/icons/BackArrow";
+
+// Styles/Icons
 import styles from "./news.module.css";
-import Image from "next/image";
+import BackArrow from "../common/icons/BackArrow";
+
 const NewsDetails = () => {
   const router = useRouter();
   const { id } = router.query as { id: string };

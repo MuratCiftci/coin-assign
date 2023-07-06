@@ -1,8 +1,13 @@
-import { Table, Row, Col, Tooltip, User, Text } from "@nextui-org/react";
-import { CoinList } from "./types";
-import Image from "next/image";
-import { RenderCell } from "./RenderCell";
 import { useRouter } from "next/router";
+
+// 3rd party imports
+import { Table, Text } from "@nextui-org/react";
+
+// Types and Hooks
+import { CoinList } from "./types";
+
+// Local imports
+import { RenderCell } from "./RenderCell";
 
 type Props = {
   coinList: CoinList[];

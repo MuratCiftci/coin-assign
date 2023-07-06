@@ -1,15 +1,24 @@
-import React, { useRef, useState } from "react";
-import { useGetCoinList } from "./api/getCoinList";
-import CoinTable from "./Table";
-import { Button, Card, Grid, Input, Loading, Text } from "@nextui-org/react";
-import { InputSearchIcon } from "../common/icons/InputSearchIcon";
-import { useDebounce } from "@/hooks/useDebounce";
-import { useGetCoinIds } from "./api/getAllCoinIds";
-import { TablePagination } from "./Pagination";
 
-import styles from "./coinList.module.css";
+// React Imports 
+import React, { useRef, useState } from "react";
+
+// 3rd Party Imports
+import { Button, Card, Grid, Input, Loading, Text } from "@nextui-org/react";
 import { toast } from "react-hot-toast";
+
+// Local Component Imports
+import { InputSearchIcon } from "../common/icons/InputSearchIcon";
+import { TablePagination } from "./Pagination";
+import CoinTable from "./Table";
 import Loader from "../common/Loading";
+
+// Local Style Imports
+import styles from "./coinList.module.css";
+
+// Local Hook/Service Imports
+import { useGetCoinList } from "./api/getCoinList";
+import { useGetCoinIds } from "./api/getAllCoinIds";
+
 
 const CoinList = () => {
   const [page, setPage] = useState(1);
@@ -20,7 +29,6 @@ const CoinList = () => {
   // search state for re-rendering the component when search value changes
   const [searchState, setSearchState] = useState("");
 
-  const [loadingButton, setLoadingButton] = useState(false);
 
   // get coin ids for pagination and search (we need coin ids for search and
   // total coin count for pagination)
@@ -98,7 +106,6 @@ const CoinList = () => {
     const ids = getCoinIdsBasedOnSearch();
     setPage(1);
     setSearchState(ids);
-    setLoadingButton(false);
   };
 
   const totalPages = getTotalPageBasedOnSearch(searchState);

@@ -1,5 +1,14 @@
-import { Button, Card, Grid, Loading } from "@nextui-org/react";
 import React from "react";
+
+// Hooks/Services
+import { useGetMarketChart } from "../FavoriteCoins/api/getMarketChart";
+
+// Components
+import ButtonGroup from "./ButtonGroup";
+import Loader from "../common/Loading";
+
+// 3rd-party imports
+import {  Card, Grid } from "@nextui-org/react";
 import {
   LineChart,
   Line,
@@ -8,10 +17,7 @@ import {
   Tooltip,
   XAxis,
 } from "recharts";
-import { useGetMarketChart } from "../FavoriteCoins/api/getMarketChart";
 import dayjs from "dayjs";
-import ButtonGroup from "./ButtonGroup";
-import Loader from "../common/Loading";
 
 type Props = {
   coin: any;

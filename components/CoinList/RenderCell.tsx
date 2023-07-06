@@ -1,10 +1,16 @@
 import React from "react";
-import { CoinList } from "./types";
-import { Text, User } from "@nextui-org/react";
-import Image from "next/image";
-import styles from "./coinList.module.css";
-import { useFavoriteCoinsStore } from "@/store/favoriteCoinsStore";
 import { useRouter } from "next/router";
+import Image from "next/image";
+
+// Types and Hooks 
+import { CoinList } from "./types";
+import styles from "./coinList.module.css";
+
+// 3rd party libraries
+import { Text, User } from "@nextui-org/react";
+
+// Global Zustand Store
+import { useFavoriteCoinsStore } from "@/store/favoriteCoinsStore";
 
 type Props = {
   coin: CoinList;

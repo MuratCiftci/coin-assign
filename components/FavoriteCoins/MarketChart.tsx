@@ -6,6 +6,7 @@ import {
 } from "recharts";
 
 import { useGetMarketChart } from "./api/getMarketChart";
+import Loader from "../common/Loading";
 
 type Props = {
   id: string;
@@ -15,7 +16,7 @@ type Props = {
 const MarketChart = ({ id, isCoinRising }: Props) => {
   const { marketChart, isLoading, isError } = useGetMarketChart(id, 1);
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   if (isError || !marketChart) {
