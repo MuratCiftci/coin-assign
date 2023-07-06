@@ -1,38 +1,28 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Demo 
+[Demo] (https://coin-assign.vercel.app/) Projeyi bu linkten inceleyebilirsiniz.
 
-First, run the development server:
+## Kullanılan Kütüphaneler
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- [NEXT-UI](https://nextui.org/) - UI Kütüphanesi
+  Next UI kulllanmamın sebebi, modern tasarıma sahip, içinde bir çok komponenti barındırması ve kolay kullanılabilir olmasıdır.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [React-Query] (https://react-query.tanstack.com/) - Cache ve API Kütüphanesi
+  React-Query kullanmamın sebebi, verileri cacheleyerek tekrar tekrar istek atmayı engellemesi, lifecycle fonksiyonları ile verileri istediğimiz gibi yönetebilmesi ve kolay kullanılabilir olmasıdır. Kullanmamın sebebini bir makalemde ayrıntılı bir şekilde anlatmıştım.
+  https://muratciftci.notion.site/Neden-Redux-yerine-React-Query-Kullan-yorum-Server-State-ler-i-in-94ca6e438712404db0abf61fb9c9f60c
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- [Dayjs] (https://day.js.org/) - Tarih Kütüphanesi
+  Dayjs kullanmamın sebebi, tarihleri kolay bir şekilde yönetebilmesi ve moment kütüphanesinin modern ve hafif bir alternatifi olmasıdır. ( Moment yaklaşık 300kb iken Dayjs 2kb'dır. )
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- [React-hot-toast] (https://react-hot-toast.com/) - Bildirim Kütüphanesi
+  Kullanmamın sebebi, kolay kullanılabilir olması, hafif olması ve modern tasarıma sahip olmasıdır.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- [Rechart] (https://recharts.org/en-US/) - Grafik Kütüphanesi
+  Kullanmamın sebebi, içinde çok güzel line chart barındırması ve React ile uyumlu olmasıdır.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- [Zustand] (https://docs.pmnd.rs/zustand/getting-started/introduction) - State Management Kütüphanesi
+  Context.API'dan farklı olarak child komponentlerin gereksiz yere re-render olmasını engellemesi, Provider yapısına ihtiyaç duymaması ve kolay kullanılabilir olmasıdır.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [Prisma] (https://www.prisma.io/) - ORM Kütüphanesi
+  Kullanmamın sebebi, haberleri PlanetScale veritabanı üzerinde tuttuğum için, PlanetScale ile uyumlu olması ve kolay kullanılabilir olmasıdır. Ayrıca ORM kullanmamın sebebi, veritabanı işlemlerini daha kolay ve güvenli bir şekilde yapabilmektir.
