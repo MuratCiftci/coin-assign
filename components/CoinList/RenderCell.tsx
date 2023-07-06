@@ -2,12 +2,12 @@ import React from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
-// Types and Hooks 
+// Types and Hooks
 import { CoinList } from "./types";
 import styles from "./coinList.module.css";
 
 // 3rd party libraries
-import { Text, User } from "@nextui-org/react";
+import { Button, Text, User } from "@nextui-org/react";
 
 // Global Zustand Store
 import { useFavoriteCoinsStore } from "@/store/favoriteCoinsStore";
@@ -30,12 +30,11 @@ export const RenderCell = ({ coin, columnKey }: Props) => {
       state.removeFavoriteCoin,
     ]);
 
-
   const handleFavorite = () => {
+    console.log("coin.id", coin.id);
     if (favorites.includes(coin.id)) {
       removeFavoriteCoin(coin.id);
     } else {
-      
       //  // go to up  smooth
       // window.scrollTo({ top: 400, behavior: "smooth" });
       addFavoriteCoin(coin.id);
@@ -49,7 +48,7 @@ export const RenderCell = ({ coin, columnKey }: Props) => {
           squared
           src={coin?.image}
           name={cellValue}
-          css={{ p: 0 , cursor: "pointer"}}
+          css={{ p: 0, cursor: "pointer" }}
           onClick={() => router.push(`/coins/${coin?.id}`)}
         >
           {coin?.name}
@@ -77,7 +76,7 @@ export const RenderCell = ({ coin, columnKey }: Props) => {
       );
     case "actions":
       return (
-        <button className={styles.star} onClick={handleFavorite}>
+        <Button light onPress={handleFavorite} color="warning" auto>
           {favorites.includes(coin.id) ? (
             <Image
               src="/star-yellow.png"
@@ -88,7 +87,7 @@ export const RenderCell = ({ coin, columnKey }: Props) => {
           ) : (
             <Image src="/star.png" alt="star-empty" width={20} height={20} />
           )}
-        </button>
+        </Button>
       );
     default:
       return cellValue;
