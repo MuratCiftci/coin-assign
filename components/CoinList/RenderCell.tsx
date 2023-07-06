@@ -77,7 +77,7 @@ export const RenderCell = ({ coin, columnKey }: Props) => {
       );
     case "actions":
       return (
-        <button className={styles.star} onClick={() => handleFavorite()}>
+        <button className={styles.star} onClick={handleFavorite}>
           {favorites.includes(coin.id) ? (
             <Image
               src="/star-yellow.png"

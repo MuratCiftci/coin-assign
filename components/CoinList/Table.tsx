@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 
 // 3rd party imports
-import { Table, Text } from "@nextui-org/react";
+import { Table, Text, User } from "@nextui-org/react";
 
 // Types and Hooks
 import { CoinList } from "./types";
@@ -14,7 +14,6 @@ type Props = {
 };
 
 export default function CoinListTable({ coinList }: Props) {
-  const router = useRouter();
   const columns =
     coinList?.length === 0
       ? [{ name: "İşlemler", uid: "actions" }]
@@ -42,6 +41,7 @@ export default function CoinListTable({ coinList }: Props) {
         backgroundColor: "#fff",
         border: "none !important",
       }}
+      selectionMode="none"
       lined={coinList?.length === 0 ? false : true}
       headerLined={coinList?.length === 0 ? false : true}
     >
