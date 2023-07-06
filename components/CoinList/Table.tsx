@@ -1,19 +1,13 @@
 import { useRouter } from "next/router";
 
-// 3rd party imports
-import { Button, Col, Row, Table, Text, User } from "@nextui-org/react";
-import { useReactTable } from "@tanstack/react-table";
-
 // Types and Hooks
 import { CoinList } from "./types";
 
 // Local imports
 import React from "react";
-import {RenderCell} from "./RenderCell";
-import { Tooltip } from "recharts";
+import { RenderCell } from "./RenderCell";
 import styles from "./coinList.module.css";
-import { useFavoriteCoinsStore } from "@/store/favoriteCoinsStore";
-import Image from "next/image";
+
 type Props = {
   coinList: CoinList[];
 };
@@ -29,7 +23,6 @@ type UserType = {
 };
 
 const CoinListTable = ({ coinList }: Props) => {
-  const router = useRouter();
   const columns = [
     { name: "Ad", uid: "name" },
     { name: "Fiyat", uid: "current_price" },
@@ -38,7 +31,6 @@ const CoinListTable = ({ coinList }: Props) => {
     { name: "İşlemler", uid: "actions" },
   ];
 
- 
   return (
     <table className={styles.table}>
       <thead>
@@ -50,7 +42,7 @@ const CoinListTable = ({ coinList }: Props) => {
       </thead>
       <tbody>
         {coinList.map((coin) => (
-           <RenderCell key={coin.id} coin={coin} />
+          <RenderCell key={coin.id} coin={coin} />
         ))}
       </tbody>
     </table>
