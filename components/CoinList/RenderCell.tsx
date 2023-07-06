@@ -14,13 +14,10 @@ import { useFavoriteCoinsStore } from "@/store/favoriteCoinsStore";
 
 type Props = {
   coin: CoinList;
-  columnKey: React.Key;
 };
 
-export const RenderCell = ({ coin, columnKey }: Props) => {
+export const RenderCell = ({ coin }: Props) => {
   const router = useRouter();
-
-  const cellValue = coin[columnKey as keyof CoinList];
 
   // global zustand store for favorite coins
   const [favorites, addFavoriteCoin, removeFavoriteCoin] =
@@ -30,7 +27,7 @@ export const RenderCell = ({ coin, columnKey }: Props) => {
       state.removeFavoriteCoin,
     ]);
 
-  const handleFavorite = () => {
+  const handleFavorite = (coin: CoinList) => {
     console.log("coin.id", coin.id);
     if (favorites.includes(coin.id)) {
       removeFavoriteCoin(coin.id);
@@ -41,42 +38,59 @@ export const RenderCell = ({ coin, columnKey }: Props) => {
     }
   };
 
-  switch (columnKey) {
-    case "name":
-      return (
+  return (
+    <tr key={coin.id}>
+      <td>
         <User
           squared
           src={coin?.image}
-          name={cellValue}
+          name={coin?.name}
           css={{ p: 0, cursor: "pointer" }}
           onClick={() => router.push(`/coins/${coin?.id}`)}
         >
           {coin?.name}
         </User>
-      );
-    case "current_price":
-      return <Text b>${cellValue?.toLocaleString()}</Text>;
-    case "price_change_percentage_24h":
-      return (
+      </td>
+      <td>
+        <Text b>${coin?.current_price.toLocaleString()}</Text>
+      </td>
+      <td>
         <Text
           b
-          color={cellValue ? (Number(cellValue) > 0 ? "success" : "error") : ""}
+          color={
+            coin.price_change_percentage_24h
+              ? Number(coin.price_change_percentage_24h) > 0
+                ? "success"
+                : "error"
+              : ""
+          }
         >
-          {cellValue ? cellValue.toLocaleString() : ""}%
+          {coin.price_change_percentage_24h
+            ? coin.price_change_percentage_24h.toLocaleString()
+            : ""}
+          %
         </Text>
-      );
-    case "price_change_24h":
-      return (
+      </td>
+      <td>
         <Text
           b
-          color={cellValue ? (Number(cellValue) > 0 ? "success" : "error") : ""}
+          color={
+            coin.price_change_24h
+              ? Number(coin.price_change_24h) > 0
+                ? "success"
+                : "error"
+              : ""
+          }
         >
-          ${cellValue ? cellValue.toLocaleString() : ""}
+          ${coin.price_change_24h ? coin.price_change_24h.toLocaleString() : ""}
         </Text>
-      );
-    case "actions":
-      return (
-        <Button light onPress={handleFavorite} color="warning" auto>
+      </td>
+      <td>
+        <button
+          className={styles.star}
+          onClick={(e) => handleFavorite(coin)}
+          type="button"
+        >
           {favorites.includes(coin.id) ? (
             <Image
               src="/star-yellow.png"
@@ -87,9 +101,8 @@ export const RenderCell = ({ coin, columnKey }: Props) => {
           ) : (
             <Image src="/star.png" alt="star-empty" width={20} height={20} />
           )}
-        </Button>
-      );
-    default:
-      return cellValue;
-  }
+        </button>
+      </td>
+    </tr>
+  );
 };

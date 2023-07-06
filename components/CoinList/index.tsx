@@ -1,5 +1,4 @@
-
-// React Imports 
+// React Imports
 import React, { useRef, useState } from "react";
 
 // 3rd Party Imports
@@ -19,7 +18,6 @@ import styles from "./coinList.module.css";
 import { useGetCoinList } from "./api/getCoinList";
 import { useGetCoinIds } from "./api/getAllCoinIds";
 
-
 const CoinList = () => {
   const [page, setPage] = useState(1);
 
@@ -29,6 +27,7 @@ const CoinList = () => {
   // search state for re-rendering the component when search value changes
   const [searchState, setSearchState] = useState("");
 
+  
 
   // get coin ids for pagination and search (we need coin ids for search and
   // total coin count for pagination)
@@ -110,7 +109,7 @@ const CoinList = () => {
 
   const totalPages = getTotalPageBasedOnSearch(searchState);
 
-  console.log(isLoading)
+  console.log(isLoading);
   return (
     <Grid.Container gap={2} justify="space-between">
       <Card>
@@ -167,4 +166,4 @@ const CoinList = () => {
   );
 };
 
-export default CoinList;
+export default React.memo(CoinList);
