@@ -35,7 +35,7 @@ export const RenderCell = ({ coin, columnKey }: Props) => {
     if (favorites.includes(coin.id)) {
       removeFavoriteCoin(coin.id);
     } else {
-
+      debugger;
        // go to up  smooth
       window.scrollTo({ top: 400, behavior: "smooth" });
       addFavoriteCoin(coin.id);
@@ -77,7 +77,7 @@ export const RenderCell = ({ coin, columnKey }: Props) => {
       );
     case "actions":
       return (
-        <div className={styles.star} onClick={() => handleFavorite()}>
+        <button className={styles.star} onClick={() => handleFavorite()}>
           {favorites.includes(coin.id) ? (
             <Image
               src="/star-yellow.png"
@@ -88,7 +88,7 @@ export const RenderCell = ({ coin, columnKey }: Props) => {
           ) : (
             <Image src="/star.png" alt="star-empty" width={20} height={20} />
           )}
-        </div>
+        </button>
       );
     default:
       return cellValue;
