@@ -11,6 +11,7 @@ import {
 import { useGetMarketChart } from "../FavoriteCoins/api/getMarketChart";
 import dayjs from "dayjs";
 import ButtonGroup from "./ButtonGroup";
+import Loader from "../common/Loading";
 
 type Props = {
   coin: any;
@@ -48,7 +49,7 @@ const MarketChart = ({ coin }: Props) => {
         </Grid>
         <Grid xs={6}>
           {isLoading ? (
-            <Loading color={coin.isCoinRising ? "success" : "error"} />
+            <Loader color="primary" />
           ) : isError || !marketChart ? (
             <div>Market Chart not found</div>
           ) : (

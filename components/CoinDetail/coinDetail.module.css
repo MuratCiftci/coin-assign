@@ -1,7 +1,6 @@
 .container {
   padding: 16px;
   background-color: #fff;
-  flex-direction: column;
 }
 .wrapperContainer {
   display: flex;
@@ -41,5 +40,27 @@
 }
 
 .active {
-  background-color: #004e8a;
+  background-color: #0072f5;
+  color: #fff;
+}
+.newsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 60%;
+  padding: 3px;
+}
+
+.description {
+  display: inherit;
+  justify-content: inherit;
+  align-items: inherit;
+  font-size: 0.85rem;
+  max-width: var(--max-width);
+  width: 100%;
+  z-index: 2;
+  margin-top: 10px;
+  display: block;
 }

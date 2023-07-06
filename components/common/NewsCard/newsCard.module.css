@@ -1,0 +1,40 @@
+.newsCard {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    margin: 16px;
+    padding: 16px;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+    width: 100%;
+  }
+  
+  .newsImage {
+    width: 100%;
+    height: 120px;
+    border-radius: 12px;
+    object-fit: cover;
+    margin-top: 1rem;
+    
+  }
+  
+  .newsDate {
+    font-size: 12px;
+    color: #6a737d;
+    margin: 8px 0;
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+  }
+  .newsSubtitle {
+    font-size: 14px;
+    color: #6a737d;
+    margin: 8px 0;
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    text-align: center;
+  }

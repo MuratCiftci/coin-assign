@@ -32,7 +32,7 @@ export default function CoinListTable({ coinList }: Props) {
         marginTop: "1rem",
         borderRadius: "0.5rem",
       }}
-      selectionMode="single"
+      selectionMode="none"
       onSelectionChange={(e: any) => {
         router.push(`/coins/${e.anchorKey}`);
       }}
@@ -72,7 +72,7 @@ export default function CoinListTable({ coinList }: Props) {
           </Table.Row>
         ) : (
           (item: CoinList) => (
-            <Table.Row>
+            <Table.Row key={item.id}>
               {(columnKey) => (
                 <Table.Cell>
                   <RenderCell coin={item} columnKey={columnKey} />
@@ -82,12 +82,6 @@ export default function CoinListTable({ coinList }: Props) {
           )
         )}
       </Table.Body>
-      <Table.Pagination
-        shadow
-        noMargin
-        align="center"
-        rowsPerPage={coinList.length > 20 ? 20 : coinList.length}
-      />
     </Table>
   );
 }

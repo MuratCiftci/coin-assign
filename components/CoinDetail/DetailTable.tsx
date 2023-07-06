@@ -16,10 +16,16 @@ const DetailTable = ({ coin }: Props) => {
         </tr>
 
         <tr className={styles.tr}>
-          <td className={styles.td}> ${coin?.market_data.market_cap.usd}</td>
-          <td className={styles.td}>${coin?.market_data.total_volume.usd}</td>
           <td className={styles.td}>
-            ${coin?.market_data.low_24h.usd} / ${coin?.market_data.high_24h.usd}
+            {" "}
+            ${coin?.market_data.market_cap.usd.toLocaleString()}{" "}
+          </td>
+          <td className={styles.td}>
+            ${coin?.market_data.total_volume.usd.toLocaleString()}
+          </td>
+          <td className={styles.td}>
+            ${coin?.market_data.low_24h.usd.toLocaleString()} / $
+            {coin?.market_data.high_24h.usd.toLocaleString()}
           </td>
         </tr>
       </thead>

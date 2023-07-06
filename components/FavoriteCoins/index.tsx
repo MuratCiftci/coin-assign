@@ -19,7 +19,7 @@ export const FavoriteCoins = () => {
       <Grid.Container gap={2} justify="center">
         {favoriteCoins.length > 0 ? (
           favoriteCoins.map((coin) => (
-            <Grid xs={12} sm={4} md={3} key={coin}>
+            <Grid xs={12} sm={4} md={4} key={coin} css={{ display: "flex", justifyContent:"center"}}>
               <CoinCard id={coin} />
             </Grid>
           ))

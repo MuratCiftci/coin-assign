@@ -9,6 +9,8 @@ import DownIcon from "../common/icons/DownIcon";
 import DetailTable from "./DetailTable";
 import MarketChart from "./MarketChart";
 import styles from "./coinDetail.module.css";
+import CoinNews from "./CoinNews";
+import BreadCrumb from "../common/icons/BreadCrumb";
 
 const CoinDetail = () => {
   // get coin id from router
@@ -31,10 +33,35 @@ const CoinDetail = () => {
   return (
     <Grid.Container gap={1} className={styles.container}>
       <Grid
+        xs={12}
+        sm={12}
+        md={12}
+        css={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "flex-start",
+        }}
+      >
+        <Text
+          css={{ fontSize: "$4", fontWeight: "bold", cursor: "pointer" }}
+          onClick={() => router.push("/")}
+        >
+          {" "}
+          Market Listesi{" "}
+        </Text>
+        <BreadCrumb />
+        <Text css={{ fontSize: "$4", fontWeight: "bold" }}> {coin?.name} </Text>
+      </Grid>
+
+      <Grid
         xs={6}
         sm={6}
         md={6}
-        css={{ display: "flex", alignItems: "flex-start" , flexDirection: "column"}}
+        css={{
+          display: "flex",
+          alignItems: "flex-start",
+          flexDirection: "column",
+        }}
       >
         <Grid xs={3} sm={4} md={3}>
           <Badge color="default"> Rank #{coin?.market_cap_rank} </Badge>
@@ -63,7 +90,7 @@ const CoinDetail = () => {
           </Text>{" "}
           <Text h5 css={{ lineHeight: "$xs", ml: "2rem" }}>
             {" "}
-            ${coin?.market_data.current_price.usd}{" "}
+            ${coin?.market_data.current_price.usd.toLocaleString()}{" "}
           </Text>
           <Text
             h5
@@ -86,6 +113,26 @@ const CoinDetail = () => {
         <Grid xs={12} sm={12} md={12}>
           <MarketChart coin={coin} />
         </Grid>
+        <Grid xs={12} sm={12} md={12}>
+          <p
+            dangerouslySetInnerHTML={{ __html: coin.description.en }}
+            className={styles.description}
+          ></p>
+        </Grid>
+      </Grid>
+      <Grid
+        xs={6}
+        sm={6}
+        md={6}
+        css={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-start",
+          alignItems: "flex-end",
+          width: "60%",
+        }}
+      >
+        <CoinNews />
       </Grid>
     </Grid.Container>
   );

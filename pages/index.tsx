@@ -3,6 +3,7 @@ import styles from "@/styles/Home.module.css";
 import CoinList from "@/components/CoinList";
 import { useState } from "react";
 import { FavoriteCoins } from "@/components/FavoriteCoins";
+import HomePageNews from "@/components/HomepageNews";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
+        <HomePageNews />
         <FavoriteCoins />
         <CoinList />
       </main>

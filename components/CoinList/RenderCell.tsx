@@ -4,6 +4,7 @@ import { Text, User } from "@nextui-org/react";
 import Image from "next/image";
 import styles from "./coinList.module.css";
 import { useFavoriteCoinsStore } from "@/store/favoriteCoinsStore";
+import { useRouter } from "next/router";
 
 type Props = {
   coin: CoinList;
@@ -11,6 +12,8 @@ type Props = {
 };
 
 export const RenderCell = ({ coin, columnKey }: Props) => {
+  const router = useRouter();
+
   const cellValue = coin[columnKey as keyof CoinList];
 
   // global zustand store for favorite coins
@@ -21,10 +24,14 @@ export const RenderCell = ({ coin, columnKey }: Props) => {
       state.removeFavoriteCoin,
     ]);
 
+
   const handleFavorite = () => {
     if (favorites.includes(coin.id)) {
       removeFavoriteCoin(coin.id);
     } else {
+
+       // go to up  smooth
+      window.scrollTo({ top: 400, behavior: "smooth" });
       addFavoriteCoin(coin.id);
     }
   };
@@ -32,19 +39,25 @@ export const RenderCell = ({ coin, columnKey }: Props) => {
   switch (columnKey) {
     case "name":
       return (
-        <User squared src={coin?.image} name={cellValue} css={{ p: 0 }}>
+        <User
+          squared
+          src={coin?.image}
+          name={cellValue}
+          css={{ p: 0 , cursor: "pointer"}}
+          onClick={() => router.push(`/coins/${coin?.id}`)}
+        >
           {coin?.name}
         </User>
       );
     case "current_price":
-      return <Text b>${cellValue}</Text>;
+      return <Text b>${cellValue?.toLocaleString()}</Text>;
     case "price_change_percentage_24h":
       return (
         <Text
           b
           color={cellValue ? (Number(cellValue) > 0 ? "success" : "error") : ""}
         >
-          {cellValue ? Number(cellValue).toFixed(2) : ""}%
+          {cellValue ? cellValue.toLocaleString() : ""}%
         </Text>
       );
     case "price_change_24h":
@@ -53,7 +66,7 @@ export const RenderCell = ({ coin, columnKey }: Props) => {
           b
           color={cellValue ? (Number(cellValue) > 0 ? "success" : "error") : ""}
         >
-          ${cellValue ? Number(cellValue).toFixed(8) : ""}
+          ${cellValue ? cellValue.toLocaleString() : ""}
         </Text>
       );
     case "actions":
@@ -67,12 +80,7 @@ export const RenderCell = ({ coin, columnKey }: Props) => {
               height={20}
             />
           ) : (
-            <Image
-              src="/star.png"
-              alt="star-empty"
-              width={20}
-              height={20}
-            />
+            <Image src="/star.png" alt="star-empty" width={20} height={20} />
           )}
         </div>
       );
