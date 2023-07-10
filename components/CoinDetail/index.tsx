@@ -99,7 +99,7 @@ const CoinDetail = () => {
           </Text>{" "}
           <Text h5 css={{ lineHeight: "$xs", ml: "2rem" }}>
             {" "}
-            ${coin?.market_data.current_price.usd.toLocaleString()}{" "}
+            ${coin?.market_data.current_price?.usd.toLocaleString()}{" "}
           </Text>
           <Text
             h5

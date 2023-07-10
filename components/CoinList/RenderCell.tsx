@@ -53,7 +53,7 @@ type Props = {
         </User>
       </td>
       <td>
-        <Text b>${coin?.current_price.toLocaleString()}</Text>
+        <Text b>${coin?.current_price?.toLocaleString()}</Text>
       </td>
       <td>
         <Text
